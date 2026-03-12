@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra Build — Licensing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay:    #b85c2a;
+    --clay-d:  #8c3e18;
+    --clay-l:  #f5e6dc;
+    --sand:    #f7f2ea;
+    --earth:   #3d2f1e;
+    --sky:     #1d4e6e;
+    --sky-l:   #d4eaf7;
+    --moss:    #2d5c35;
+    --moss-l:  #d8f0dc;
+    --rule:    #ddd6cc;
+    --ink:     #1a1a1a;
+    --muted:   #7a6e62;
+    --white:   #ffffff;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .hero {
+    background: var(--earth);
+    color: var(--white);
+    padding: 80px 80px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: 'LICENSE';
+    position: absolute;
+    right: -20px;
+    bottom: -60px;
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 28px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 28px;
+  }
+
+  .hero-title span { color: var(--clay); }
+
+  .hero-tagline {
+    font-size: 18px;
+    color: #b0a898;
+    max-width: 580px;
+    line-height: 1.55;
+  }
+
+  .section {
+    padding: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--earth);
+    margin-bottom: 32px;
+    line-height: 1.15;
+  }
+
+  p.body {
+    color: #3a3028;
+    font-size: 16px;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+
+  /* ── ALERT BAND ── */
+  .alert-band {
+    background: var(--clay);
+    color: var(--white);
+    padding: 40px 80px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .alert-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 4px;
+  }
+
+  .alert-band p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+    max-width: 740px;
+  }
+
+  .alert-band p strong { color: var(--white); }
+
+  /* ── LICENSE MATRIX ── */
+  .matrix-wrap {
+    border: 1px solid var(--rule);
+    background: var(--white);
+    overflow: hidden;
+  }
+
+  .matrix-header {
+    display: grid;
+    grid-template-columns: 1.6fr 0.8fr 2.8fr;
+    background: var(--earth);
+    padding: 12px 28px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a7e72;
+    gap: 24px;
+  }
+
+  .matrix-row {
+    display: grid;
+    grid-template-columns: 1.6fr 0.8fr 2.8fr;
+    padding: 20px 28px;
+    gap: 24px;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .matrix-row:nth-child(even) { background: var(--sand); }
+  .matrix-row:last-child { border-bottom: none; }
+
+  .matrix-component { font-weight: 600; font-size: 14px; color: var(--earth); }
+  .matrix-component small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 3px; }
+
+  .matrix-license {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--clay);
+    font-weight: 700;
+    padding: 4px 8px;
+    border: 1px solid var(--clay);
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .matrix-why { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── OBLIGATIONS GRID ── */
+  .oblig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 40px 0;
+  }
+
+  .oblig-card {
+    background: var(--white);
+    padding: 36px;
+  }
+
+  .oblig-card:nth-child(2) { background: var(--earth); }
+
+  .oblig-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .oblig-card:nth-child(1) .oblig-tag { color: var(--moss); }
+  .oblig-card:nth-child(2) .oblig-tag { color: var(--clay); }
+  .oblig-card:nth-child(3) .oblig-tag { color: #b85c2a; }
+
+  .oblig-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .oblig-card:nth-child(1) .oblig-title { color: var(--earth); }
+  .oblig-card:nth-child(2) .oblig-title { color: var(--white); }
+  .oblig-card:nth-child(3) .oblig-title { color: var(--earth); }
+
+  .oblig-list {
+    list-style: none;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .oblig-card:nth-child(1) .oblig-list { color: var(--muted); }
+  .oblig-card:nth-child(2) .oblig-list { color: #b0a898; }
+  .oblig-card:nth-child(3) .oblig-list { color: var(--muted); }
+
+  .oblig-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .oblig-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+  }
+
+  .oblig-card:nth-child(1) .oblig-list li::before { color: var(--moss); }
+  .oblig-card:nth-child(2) .oblig-list li::before { color: var(--clay); }
+  .oblig-card:nth-child(3) .oblig-list li::before { color: var(--clay); }
+
+  /* ── NOTICE BOX ── */
+  .notice-section {
+    background: var(--earth);
+    padding: 80px;
+  }
+
+  .notice-section .section-title { color: var(--white); }
+  .notice-section .section-label { color: var(--clay); }
+
+  .notice-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-left: 4px solid var(--clay);
+    padding: 36px 40px;
+    margin-top: 32px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c8beb4;
+  }
+
+  .notice-box .notice-heading {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 16px;
+  }
+
+  .notice-box strong { color: var(--white); }
+
+  /* ── TRADEMARK ── */
+  .tm-section { background: var(--clay-l); padding: 80px; }
+  .tm-section .section-title { color: var(--clay-d); }
+
+  .tm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .tm-card {
+    border: 1px solid #e0ccbf;
+    background: var(--white);
+    padding: 36px;
+  }
+
+  .tm-card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 14px;
+  }
+
+  .tm-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--earth);
+    margin-bottom: 14px;
+  }
+
+  .tm-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── SCENARIO TABLE ── */
+  .scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 32px;
+    font-size: 14px;
+  }
+
+  .scenario-table th {
+    text-align: left;
+    padding: 12px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a7e72;
+    background: var(--earth);
+    border-bottom: 2px solid var(--clay);
+  }
+
+  .scenario-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    vertical-align: top;
+  }
+
+  .scenario-table tr:nth-child(even) td { background: var(--sand); }
+  .scenario-table td:first-child { font-weight: 600; max-width: 240px; }
+  .scenario-table td.ok { color: var(--moss); font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; }
+  .scenario-table td.warn { color: #a07820; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; }
+  .scenario-table td.no { color: #a03020; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; }
+
+  /* ── CALLOUT ── */
+  .big-callout {
+    border-left: 5px solid var(--clay);
+    padding: 28px 36px;
+    margin: 40px 0;
+    background: var(--clay-l);
+    max-width: 720px;
+  }
+
+  .big-callout p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--clay-d);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--earth);
+    padding: 80px;
+    color: var(--white);
+  }
+
+  .contact-section .section-title { color: var(--white); }
+  .contact-section .section-label { color: var(--clay); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .contact-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 36px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .contact-card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 12px;
+  }
+
+  .contact-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .contact-card p {
+    font-size: 14px;
+    color: #b0a898;
+    line-height: 1.65;
+  }
+
+  .contact-card a {
+    color: var(--clay);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+  }
+
+  .closing-final {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: #5a4e42;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 60px 32px 48px; }
+    .alert-band { padding: 32px; flex-direction: column; gap: 16px; }
+    .oblig-grid, .tm-grid, .contact-grid { grid-template-columns: 1fr; }
+    .matrix-header, .matrix-row { grid-template-columns: 1fr; gap: 8px; }
+    .matrix-header { display: none; }
+    .section, .notice-section, .tm-section, .contact-section { padding: 48px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="background: var(--earth); padding: 12px 80px; display: flex; gap: 32px; align-items: center; border-bottom: 2px solid var(--clay);">
+  <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay); margin-right: auto;">Terra Build</span>
+  <a href="index.html" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a898; text-decoration: none;">Overview</a>
+  <a href="terra_build_cost_analysis.html" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a898; text-decoration: none;">Cost Analysis</a>
+  <a href="terra_build_full_plan.html" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a898; text-decoration: none;">Full Plan</a>
+  <a href="licensing.html" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; text-decoration: none; border-bottom: 1px solid var(--clay); padding-bottom: 1px;">Licensing</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Terra Build &nbsp;·&nbsp; Licensing &amp; Implementation Terms</div>
+  <div class="hero-title">Open by Design.<br><span>Enforceable</span><br>by Law.</div>
+  <div class="hero-tagline">Terra Build is intentionally open. The licenses below are not suggestions — they are binding legal conditions that govern how any part of this system may be implemented, manufactured, or deployed.</div>
+</div>
+
+<!-- ALERT BAND -->
+<div class="alert-band">
+  <div class="alert-icon">!</div>
+  <p>If you are building, manufacturing, hosting, or commercializing anything derived from Terra Build intellectual property — <strong>you are subject to the terms below.</strong> The open licenses grant broad rights. Those rights come with mandatory obligations. Ignoring the obligations does not dissolve them; it creates legal liability. Read carefully before you build.</p>
+</div>
+
+<!-- LICENSE MATRIX -->
+<div class="section">
+  <div class="section-label">License Summary</div>
+  <div class="section-title">What's Licensed and How</div>
+  <p class="body">Every component of Terra Build carries a specific license chosen to maximize adoption while preventing predatory closure. The table below is a summary — the full license texts govern in all cases.</p>
+
+  <div class="matrix-wrap" style="margin-top: 40px;">
+    <div class="matrix-header">
+      <span>Component</span><span>License</span><span>Enforcement Logic</span>
+    </div>
+
+    <div class="matrix-row">
+      <div class="matrix-component">
+        TerraEngine Software
+        <small>Seismic translation engine, design generation, site analysis tools</small>
+      </div>
+      <div><span class="matrix-license">AGPL-3.0</span></div>
+      <div class="matrix-why">The Affero GPL closes the SaaS loophole. Any entity running TerraEngine as a network service — even internally — must publish complete corresponding source code to users of that service. Hosting this software and keeping your modifications private is not permitted.</div>
+    </div>
+
+    <div class="matrix-row">
+      <div class="matrix-component">
+        Amendment Formulations
+        <small>Basalt fiber ratios, latex modifier specs, mineral correction protocols</small>
+      </div>
+      <div><span class="matrix-license">CC BY-SA 4.0</span></div>
+      <div class="matrix-why">You may manufacture and sell amendment packages freely. Any derivative formulation — any modification to the blend — must be published under CC BY-SA 4.0. You cannot patent, trade-secret, or otherwise encumber a derivative formulation and remove it from the commons.</div>
+    </div>
+
+    <div class="matrix-row">
+      <div class="matrix-component">
+        MPU Manufacturing Specifications
+        <small>Mechanical design, compression tolerances, QR certification system</small>
+      </div>
+      <div><span class="matrix-license">CC BY-SA 4.0</span></div>
+      <div class="matrix-why">Any cooperative or manufacturer can build a Mobile Production Unit. Improvements discovered in manufacture or operation must be documented and published under the same license. Field-discovered optimizations cannot be withheld from the network.</div>
+    </div>
+
+    <div class="matrix-row">
+      <div class="matrix-component">
+        Performance Database
+        <small>Block test results, seismic performance records, thermal data</small>
+      </div>
+      <div><span class="matrix-license">CC0</span></div>
+      <div class="matrix-why">No restrictions. No attribution required. Insurers, code bodies, researchers, and regulators may use this data freely in any form. Frictionlessness is the point — the data's value is in being used, not controlled.</div>
+    </div>
+
+    <div class="matrix-row">
+      <div class="matrix-component">
+        Policy &amp; Strategy Documents
+        <small>Code petition templates, advocacy frameworks, coalition guides</small>
+      </div>
+      <div><span class="matrix-license">CC BY-SA 4.0</span></div>
+      <div class="matrix-why">Local groups may adapt building code petitions and advocacy materials for their county or jurisdiction. Adaptations must credit Terra Build and be released under CC BY-SA 4.0. Policy forks must remain open — a traceable, usable lineage.</div>
+    </div>
+
+    <div class="matrix-row">
+      <div class="matrix-component">
+        Archetype Designs
+        <small>Certified floor plans, structural geometry templates, seismic archetypes</small>
+      </div>
+      <div><span class="matrix-license">CC BY 4.0</span></div>
+      <div class="matrix-why">Architects and developers may use certified archetypes in commercial projects without ShareAlike requirements applying to their broader design work. Attribution to Terra Build required. Every project using an archetype generates a performance data point — adoption is the goal.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OBLIGATIONS -->
+<div style="background: var(--white); padding: 80px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">Implementation Requirements</div>
+    <div class="section-title">If You Build With This,<br>Here Is What You Owe</div>
+
+    <div class="oblig-grid">
+      <div class="oblig-card">
+        <div class="oblig-tag">You May</div>
+        <div class="oblig-title">Permitted Uses</div>
+        <ul class="oblig-list">
+          <li>Use TerraEngine to design buildings for yourself or clients</li>
+          <li>Manufacture and sell amendment packages commercially</li>
+          <li>Build and operate MPUs for cooperative or commercial rental</li>
+          <li>Use archetype designs in commercial architectural projects</li>
+          <li>Adapt policy documents for local advocacy campaigns</li>
+          <li>Build derivative software tools on top of TerraEngine</li>
+          <li>Publish research using the performance database without restriction</li>
+          <li>Train machine learning models on the performance data</li>
+        </ul>
+      </div>
+
+      <div class="oblig-card">
+        <div class="oblig-tag">You Must</div>
+        <div class="oblig-title">Mandatory Obligations</div>
+        <ul class="oblig-list">
+          <li>Publish source code if hosting TerraEngine as a network service (AGPL)</li>
+          <li>Credit Terra Build in any work derived from CC BY or CC BY-SA components</li>
+          <li>License derivative formulations and MPU improvements under CC BY-SA 4.0</li>
+          <li>License adapted policy documents under CC BY-SA 4.0</li>
+          <li>Include complete license texts with any distributed software or hardware specs</li>
+          <li>Make source of any TerraEngine fork available to users upon request</li>
+          <li>Contribute certified block performance data back to the public database</li>
+        </ul>
+      </div>
+
+      <div class="oblig-card">
+        <div class="oblig-tag">You May Not</div>
+        <div class="oblig-title">Hard Prohibitions</div>
+        <ul class="oblig-list">
+          <li>Patent any derivative of the amendment formulations</li>
+          <li>Apply trade secret protection to MPU improvements</li>
+          <li>Host TerraEngine as a service while withholding source code</li>
+          <li>Use the <em>Terra Build Certified</em> trademark without authorization</li>
+          <li>Relicense components under more restrictive terms</li>
+          <li>Remove or obscure attribution notices from derivative works</li>
+          <li>Use CC BY-SA materials in a way that requires recipients to accept non-open terms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REQUIRED NOTICE -->
+<div class="notice-section">
+  <div class="section-label">Attribution Requirement</div>
+  <div class="section-title">Required Legal Notice</div>
+  <p style="color: #b0a898; max-width: 620px; font-size: 15px;">Any implementation, product, or service that incorporates Terra Build intellectual property must include the following notice in documentation, about screens, or accompanying materials, as applicable.</p>
+
+  <div class="notice-box">
+    <div class="notice-heading">Required Attribution Notice — Copy Verbatim</div>
+    <p>This [product / software / design / formulation] incorporates intellectual property developed by <strong>Terra Build</strong> and is used in accordance with the following open licenses:</p>
+    <br>
+    <p>· <strong>TerraEngine Software</strong> — GNU Affero General Public License v3.0 (AGPL-3.0)<br>
+    · <strong>Amendment Formulations</strong> — Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)<br>
+    · <strong>MPU Manufacturing Specifications</strong> — Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)<br>
+    · <strong>Archetype Designs</strong> — Creative Commons Attribution 4.0 International (CC BY 4.0)</p>
+    <br>
+    <p>Full license texts are available at: <strong>terrabuild.org/licensing</strong><br>
+    Source code availability: <strong>[your source repository URL]</strong></p>
+    <br>
+    <p style="color: #6a5e52; font-size: 12px;">AGPL-3.0 requires source code be made available to users of any network service. Omission of this notice does not void license obligations — it creates additional liability.</p>
+  </div>
+</div>
+
+<!-- SCENARIO TABLE -->
+<div class="section">
+  <div class="section-label">Implementation Scenarios</div>
+  <div class="section-title">What Your Situation Requires</div>
+  <p class="body">Common implementation scenarios and what the licenses require in each case.</p>
+
+  <table class="scenario-table">
+    <thead>
+      <tr>
+        <th>Scenario</th>
+        <th>Permitted</th>
+        <th>What You Must Do</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Owner-builder using TerraEngine to design your own home</td>
+        <td class="ok">YES</td>
+        <td>Nothing beyond standard AGPL compliance. Source is already public.</td>
+      </tr>
+      <tr>
+        <td>Architect using archetype designs in a paid residential project</td>
+        <td class="ok">YES</td>
+        <td>Credit Terra Build in project documentation. Submit performance data to public database after construction.</td>
+      </tr>
+      <tr>
+        <td>Startup hosting TerraEngine as a paid SaaS design tool</td>
+        <td class="warn">CONDITIONS</td>
+        <td>Publish complete source code (including modifications) to all users of the service. AGPL-3.0 requires this explicitly. You may charge for hosting and support — not for the software license itself.</td>
+      </tr>
+      <tr>
+        <td>Manufacturer producing and selling amendment packages</td>
+        <td class="ok">YES</td>
+        <td>If you modify the formulation, publish the modified formulation under CC BY-SA 4.0. You cannot patent the modification or remove it from the open commons.</td>
+      </tr>
+      <tr>
+        <td>Cooperative building a Mobile Production Unit</td>
+        <td class="ok">YES</td>
+        <td>Any engineering improvements to the MPU discovered in manufacture or operation must be documented and released under CC BY-SA 4.0.</td>
+      </tr>
+      <tr>
+        <td>Large homebuilder incorporating Terra Build methods at scale</td>
+        <td class="warn">CONDITIONS</td>
+        <td>Same obligations apply at scale as at small scale. Source code, formulation improvements, and MPU improvements must remain open. Trademark use requires separate authorization.</td>
+      </tr>
+      <tr>
+        <td>Advocacy org adapting Terra Build policy templates for another state</td>
+        <td class="ok">YES</td>
+        <td>Credit Terra Build. Release adapted materials under CC BY-SA 4.0.</td>
+      </tr>
+      <tr>
+        <td>Company patenting a derivative amendment formulation</td>
+        <td class="no">NO</td>
+        <td>CC BY-SA 4.0 prohibits applying legal terms that restrict recipients' exercise of license rights. Filing patents on derivatives violates the license and exposes you to liability.</td>
+      </tr>
+      <tr>
+        <td>Firm hosting a modified TerraEngine internally for their own use, not as a service</td>
+        <td class="ok">YES</td>
+        <td>Internal use only (no service to external users) does not trigger AGPL source disclosure. If you later expose it as a service, disclosure becomes mandatory.</td>
+      </tr>
+      <tr>
+        <td>Using "Terra Build Certified" branding on a product</td>
+        <td class="no">REQUIRES AUTHORIZATION</td>
+        <td>The Terra Build Certified trademark is not covered by the open licenses. Contact licensing@terrabuild.org for certification and trademark authorization terms.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TRADEMARK -->
+<div class="tm-section">
+  <div class="section-label">Trademark Policy</div>
+  <div class="section-title">What Open Licenses<br>Don't Cover</div>
+  <p class="body" style="color: var(--clay-d);">The open licenses govern what you can do with Terra Build designs, software, and specifications. The <em>Terra Build Certified</em> trademark sits above those licenses and governs what you can call your products. Open licenses and trademark protection serve different, complementary purposes.</p>
+
+  <div class="tm-grid">
+    <div class="tm-card">
+      <div class="tm-card-tag">What the Trademark Protects</div>
+      <h3>Quality and Accountability</h3>
+      <p>The <em>Terra Build Certified</em> mark guarantees that a block, MPU, or design meets verified performance standards. Anyone can build with the open specs. Only authorized implementations that pass certification testing can carry the mark. This protects the public — not Terra Build's commercial interests.</p>
+    </div>
+    <div class="tm-card">
+      <div class="tm-card-tag">Permitted Trademark Uses</div>
+      <h3>Referring to Terra Build Accurately</h3>
+      <p>You may accurately state that your product is "compatible with Terra Build specifications," "derived from Terra Build open-source designs," or "built under AGPL-3.0 licensed TerraEngine." You may not use the <em>Terra Build Certified</em> mark or the Terra Build wordmark in product names without authorization.</p>
+    </div>
+    <div class="tm-card">
+      <div class="tm-card-tag">How to Get Certified</div>
+      <h3>Certification Process</h3>
+      <p>Certification requires documented block performance data submitted to the public database, third-party structural review, and compliance with the current Terra Build production standards. The process is designed to be accessible to cooperatives — not just large manufacturers. Contact licensing@terrabuild.org to begin.</p>
+    </div>
+    <div class="tm-card">
+      <div class="tm-card-tag">Why This Matters</div>
+      <h3>Protecting the Mission</h3>
+      <p>A system that can be imitated without accountability can be undermined by poor-quality imitations. The trademark ensures that "Terra Build Certified" blocks will perform. It makes the open system durable — cheap imitations don't carry the mark, and the mark means something because it can't be freely taken.</p>
+    </div>
+  </div>
+
+  <div class="big-callout">
+    <p>The open licenses prevent capture by incumbents. The trademark prevents degradation by imitators. Both protections serve the same goal: ensuring that the system that makes housing affordable remains affordable and functional indefinitely.</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section">
+  <div class="section-label">Contact &amp; Compliance</div>
+  <div class="section-title">Questions, Violations,<br>and Certification</div>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-card-tag">General Licensing</div>
+      <h3>License Questions</h3>
+      <p>If you are uncertain whether your use case complies with the licenses above, contact us before you build. We will give you a clear answer. Proceeding without clarity is riskier than asking.</p>
+      <p style="margin-top: 16px;"><a href="mailto:licensing@terrabuild.org">licensing@terrabuild.org</a></p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-tag">Compliance Reports</div>
+      <h3>Reporting Violations</h3>
+      <p>If you observe a Terra Build component being used in violation of its license — particularly undisclosed AGPL source code or unauthorized trademark use — report it. Enforcement protects everyone who relies on the open commons remaining open.</p>
+      <p style="margin-top: 16px;"><a href="mailto:compliance@terrabuild.org">compliance@terrabuild.org</a></p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-tag">Certification</div>
+      <h3>Terra Build Certified Program</h3>
+      <p>To begin the process of becoming an authorized Terra Build Certified manufacturer, cooperative, or software provider, contact the certification team with documentation of your implementation and production standards.</p>
+      <p style="margin-top: 16px;"><a href="mailto:certification@terrabuild.org">certification@terrabuild.org</a></p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-tag">Full License Texts</div>
+      <h3>Official License Documents</h3>
+      <p>AGPL-3.0 and all Creative Commons license texts are available from their respective governing bodies. Terra Build-specific implementation terms supplement — they do not replace — those texts.</p>
+      <p style="margin-top: 16px;">
+        <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener">AGPL-3.0 Full Text ↗</a><br>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" target="_blank" rel="noopener" style="margin-top: 6px; display:block;">CC BY-SA 4.0 Full Text ↗</a><br>
+        <a href="https://creativecommons.org/licenses/by/4.0/legalcode" target="_blank" rel="noopener" style="margin-top: 6px; display:block;">CC BY 4.0 Full Text ↗</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="closing-final">
+    Terra Build &nbsp;·&nbsp; Licensing v1.0 &nbsp;·&nbsp; Effective 2026 &nbsp;·&nbsp; terrabuild.org/licensing
+  </div>
+</div>
+
+</body>
+</html>
