@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra Build — Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay:    #b85c2a;
+    --clay-d:  #8c3e18;
+    --clay-l:  #f5e6dc;
+    --sand:    #f7f2ea;
+    --earth:   #3d2f1e;
+    --sky:     #1d4e6e;
+    --sky-l:   #d4eaf7;
+    --moss:    #2d5c35;
+    --moss-l:  #d8f0dc;
+    --rule:    #ddd6cc;
+    --ink:     #1a1a1a;
+    --muted:   #7a6e62;
+    --white:   #ffffff;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--earth);
+    color: var(--white);
+    padding: 100px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: 'TERRA BUILD';
+    position: absolute;
+    right: -20px;
+    bottom: -60px;
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 28px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+
+  .hero-title span { color: var(--clay); }
+
+  .hero-tagline {
+    font-size: 20px;
+    color: #b0a898;
+    max-width: 500px;
+    line-height: 1.5;
+    margin-bottom: 56px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 48px;
+  }
+
+  .hero-stat {
+    flex: 1;
+    padding-right: 40px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    margin-right: 40px;
+  }
+
+  .hero-stat:last-child { border-right: none; margin-right: 0; }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--clay);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: #8a7e72;
+    line-height: 1.4;
+  }
+
+  /* ── MISSION BAND ── */
+  .mission-band {
+    background: var(--clay);
+    color: var(--white);
+    padding: 48px 80px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-style: italic;
+    line-height: 1.5;
+    max-width: none;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--earth);
+    margin-bottom: 32px;
+    line-height: 1.15;
+  }
+
+  p.body {
+    color: #3a3028;
+    font-size: 16px;
+    max-width: 660px;
+    margin-bottom: 20px;
+  }
+
+  /* ── THREE PILLARS ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 40px 0;
+  }
+
+  .pillar {
+    background: var(--sand);
+    padding: 40px 36px;
+  }
+
+  .pillar:nth-child(2) { background: var(--earth); }
+
+  .pillar-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .pillar:nth-child(2) .pillar-num { color: rgba(255,255,255,0.2); }
+
+  .pillar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--clay);
+    margin-bottom: 14px;
+  }
+
+  .pillar:nth-child(2) .pillar-title { color: var(--clay); }
+
+  .pillar-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .pillar:nth-child(2) .pillar-body { color: #b0a898; }
+
+  /* ── HOW IT WORKS ── */
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 40px 0;
+  }
+
+  .how-card {
+    border: 1px solid var(--rule);
+    background: var(--white);
+    padding: 36px;
+  }
+
+  .how-card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 14px;
+  }
+
+  .how-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--earth);
+    margin-bottom: 14px;
+  }
+
+  .how-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── COST TABLE ── */
+  .cost-section {
+    background: var(--earth);
+    padding: 80px;
+  }
+
+  .cost-section .section-title { color: var(--white); }
+  .cost-section .section-label { color: var(--clay); }
+
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 32px;
+    font-size: 15px;
+  }
+
+  .cost-table th {
+    text-align: left;
+    padding: 14px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a7e72;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cost-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #d0c8be;
+  }
+
+  .cost-table td:first-child { color: var(--white); font-weight: 500; }
+  .cost-table td.strike { text-decoration: line-through; color: #6a5e52; }
+  .cost-table td.green { color: #6ecf7a; font-weight: 700; }
+  .cost-table tr.total td { border-top: 1px solid rgba(255,255,255,0.2); color: var(--white); font-weight: 700; font-size: 16px; }
+  .cost-table tr.total td.green { color: #6ecf7a; font-size: 18px; }
+
+  /* ── TIMELINE ── */
+  .timeline-section { background: var(--clay-l); padding: 80px; }
+  .timeline-section .section-title { color: var(--clay-d); }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 40px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .tl-item {
+    background: var(--white);
+    padding: 32px 28px;
+    position: relative;
+  }
+
+  .tl-item:nth-child(even) { background: var(--sand); }
+
+  .tl-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+
+  .tl-milestone {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--earth);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .tl-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── CALLOUT ── */
+  .big-callout {
+    border-left: 5px solid var(--clay);
+    padding: 28px 36px;
+    margin: 40px 0;
+    background: var(--clay-l);
+    max-width: 720px;
+  }
+
+  .big-callout p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--clay-d);
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--earth);
+    color: var(--white);
+    padding: 80px;
+  }
+
+  .closing .section-title { color: var(--white); }
+
+  .closing p {
+    font-size: 18px;
+    color: #b0a898;
+    max-width: 680px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .closing p strong { color: var(--white); }
+
+  .closing-final {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: #5a4e42;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 60px 32px 48px; }
+    .hero-stats { flex-direction: column; gap: 24px; }
+    .hero-stat { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 24px; }
+    .pillars, .how-grid, .timeline-grid { grid-template-columns: 1fr; }
+    .section, .cost-section, .timeline-section, .closing { padding: 48px 32px; }
+    .mission-band { padding: 40px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Terra Build &nbsp;·&nbsp; Executive Overview</div>
+  <div class="hero-title">Affordable<br>Earth.<br><span>Engineered</span><br>for Life.</div>
+  <div class="hero-tagline">A plan to make California housing 60% cheaper — by making the industry compete or collapse.</div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">60%</div>
+      <div class="hero-stat-label">reduction in total construction cost at full operation</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">$12K</div>
+      <div class="hero-stat-label">structural wall cost per house vs $200K conventional</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3.5M</div>
+      <div class="hero-stat-label">homes California is short — this is the market</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">0</div>
+      <div class="hero-stat-label">investor returns required — built to stay affordable</div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div class="mission-band">
+  "California's housing crisis is not a land problem. It's a cost problem. Terra Build makes adobe construction so affordable that conventional pricing becomes impossible to defend."
+</div>
+
+<!-- THE PROBLEM -->
+<div class="section">
+  <div class="section-label">The Problem</div>
+  <div class="section-title">An Industry Protected<br>From Competition</div>
+  <p class="body">Building a standard home in California costs $300–$500 per square foot, before land. That number isn't driven by physics or materials — it's driven by an industry protected by favorable regulations, lobbying, and the absence of real alternatives.</p>
+  <p class="body">Adobe — compressed earth construction — has been used in earthquake-prone regions for thousands of years. Modern engineering has made it dramatically safer and more consistent. It is cheaper, greener, and thermally superior to conventional construction.</p>
+  <p class="body">It is effectively banned in California. Not because it doesn't work. Because the code system that would certify it is dominated by the industry that profits from keeping it out.</p>
+
+  <div class="big-callout">
+    <p>The barriers to adobe in California are regulatory and political — not physical or scientific. The engineering works. What's missing is the integrated system that makes it buildable, certifiable, and impossible to ignore.</p>
+  </div>
+</div>
+
+<!-- THREE PILLARS -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-label">The Solution</div>
+  <div class="section-title">Three Systems.<br>One Forcing Function.</div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Manufacturing</div>
+      <div class="pillar-body">A trailer-mounted Mobile Production Unit produces certified adobe blocks on any job site using the soil already there. No factory. No transport markup. No industrial overhead. The structural walls of a house produced in under a week for $12,000–$20,000.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Software</div>
+      <div class="pillar-body">A platform that reads the seismic profile of any California location and outputs a certified building design optimized for that exact site. Enter an address. Get a buildable, certified plan. The translation layer between seismic science and construction geometry that has never been built before.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Policy</div>
+      <div class="pillar-body">A 10-year strategy to achieve California code recognition — building research, forming affordable housing coalitions, and raising the political cost of blocking a cheaper construction method until recognition becomes inevitable.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div style="background: var(--white); padding: 80px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">From Dirt to Certified Block<br>in Under a Week</div>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-card-tag">Manufacturing</div>
+        <h3>The Mobile Production Unit</h3>
+        <p>A single trailer brings a complete block-making factory to your site. It tests the soil already there, adds a precisely formulated amendment package — basalt fiber, natural latex, mineral correctors — and compresses the mix into interlocking certified blocks at 300–500 per hour. Every block is stamped with a QR code containing its complete production record. A full house worth of blocks in 3–7 days of production.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-tag">Software</div>
+        <h3>Location-Specific Design</h3>
+        <p>California earthquakes are not all the same. Each location has a unique seismic signature — frequency, pulse type, soil amplification, fault directionality. The USGS has mapped all of this precisely. Terra Build's software translates that data into geometric building rules: exact wall thickness, corner geometry, buttress spacing, and opening sizes for that specific site. Enter an address. Get a buildable certified plan.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-tag">Wall System</div>
+        <h3>Engineered for Seismic and Thermal Performance</h3>
+        <p>The wall is a layered system: a dense thermal core of pure adobe for maximum heat buffering, outer layers of fiber-rich adobe for seismic ductility, latex-modified mortar joints that absorb energy at every course, and an external basalt fiber mesh that holds cracked walls standing. Thermal performance preserved. Seismic performance dramatically improved over traditional adobe.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-tag">Policy</div>
+        <h3>Building the Case for Code Recognition</h3>
+        <p>Codes follow political reality — they don't lead it. The strategy starts in rural California counties with simpler permitting, builds peer-reviewed research through UC Berkeley and Peru's leading earthquake lab, secures surplus-lines insurance, and frames the political case as a housing affordability issue. The cob construction movement achieved IRC code recognition in 2021 after a decade of organized effort. This is the same playbook, better resourced.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COST TABLE -->
+<div class="cost-section">
+  <div class="section-label">The Numbers</div>
+  <div class="section-title">What It Actually Costs</div>
+  <p style="color: #b0a898; max-width: 580px; margin-bottom: 0; font-size: 15px;">For a 1,500 sq ft single-story California home. Structural wall system only — the component where Terra Build creates the most dramatic change.</p>
+
+  <table class="cost-table">
+    <thead>
+      <tr>
+        <th>Cost Component</th>
+        <th>Conventional California</th>
+        <th>Terra Build</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Structural wall material</td>
+        <td class="strike">$150,000 – $250,000</td>
+        <td class="green">$0 &nbsp;(site soil)</td>
+      </tr>
+      <tr>
+        <td>Amendment packages</td>
+        <td>—</td>
+        <td class="green">$3,000 – $6,000</td>
+      </tr>
+      <tr>
+        <td>MPU operating cost</td>
+        <td>—</td>
+        <td class="green">$2,000 – $4,000</td>
+      </tr>
+      <tr>
+        <td>Production crew (1 week)</td>
+        <td>—</td>
+        <td class="green">$6,000 – $9,000</td>
+      </tr>
+      <tr>
+        <td>Block certification</td>
+        <td>—</td>
+        <td class="green">$500 – $1,000</td>
+      </tr>
+      <tr class="total">
+        <td>Total wall structure</td>
+        <td>$150,000 – $250,000</td>
+        <td class="green">$12,000 – $20,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="color: #6a5e52; font-size: 13px; margin-top: 20px; font-style: italic;">Foundation, roof, windows, MEP not included above — these are broadly similar between systems, with modest HVAC savings for adobe due to superior thermal performance. Full system comparison shows 37% savings today, 50–65% at scale with code recognition.</p>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline-section">
+  <div class="section-label">The Roadmap</div>
+  <div class="section-title">Ten Years to Change the Industry</div>
+
+  <div class="timeline-grid">
+    <div class="tl-item">
+      <div class="tl-period">Years 1 – 2</div>
+      <div class="tl-milestone">Foundation</div>
+      <div class="tl-body">First MPU prototypes built and tested. UC Berkeley and PUCP research partnerships active. 3–5 rural owner-builder homes completed. Surplus-lines insurance secured. Certification database started.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">Years 3 – 4</div>
+      <div class="tl-milestone">Validation</div>
+      <div class="tl-body">50+ certified projects. First peer-reviewed publications. Software archetype library complete. ADU pilot legislation drafted. Affordable housing developer partnerships formed.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">Years 5 – 6</div>
+      <div class="tl-milestone">Scale</div>
+      <div class="tl-body">Regional cooperative network across California. IRC appendix process engaged. HCD talks begun. Lloyd's of London binder secured. Media campaign at scale — cost data, human stories, seismic test footage.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">Years 7 – 10</div>
+      <div class="tl-milestone">Recognition</div>
+      <div class="tl-body">California code recognition. Standard insurance and conventional financing. Mass market access. Industry forced to adapt. System replicated globally: Turkey, Iran, Nepal, Peru.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ORGANIZATIONAL MODEL -->
+<div class="section">
+  <div class="section-label">The Model</div>
+  <div class="section-title">Structured to Stay<br>Affordable Forever</div>
+  <p class="body">Terra Build is not structured to make investors rich. It is structured to make the status quo economically impossible. Every design choice in the organizational model exists to prevent cost inflation from creeping back in.</p>
+
+  <div class="how-grid" style="margin-top: 32px;">
+    <div class="how-card">
+      <div class="how-card-tag">Software</div>
+      <h3>Free to Owner-Builders</h3>
+      <p>The software core is open source and free to anyone building their own home. Small commercial licenses for builders fund ongoing development — not profit extraction from the people who need it most.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-card-tag">Manufacturing</div>
+      <h3>Cooperative Ownership</h3>
+      <p>MPUs are owned by regional cooperatives — like agricultural equipment cooperatives that have let farmers share expensive machinery at cost for a century. No investor return requirement embedded in every rental rate.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-card-tag">Materials</div>
+      <h3>Cost-Based Pricing</h3>
+      <p>Amendment packages — the consumable at the heart of the system — are priced at cost plus operating margin. A fraction of equivalent conventional material costs. Always.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-card-tag">Research</div>
+      <h3>Independent Evidence</h3>
+      <p>A nonprofit research entity partnered with UC system and PUCP produces the peer-reviewed evidence base. Funded by HCD grants and foundations — not by anyone with a financial stake in the outcome.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="section-label" style="color: var(--clay);">The Bottom Line</div>
+  <div class="section-title">What Happens If This Works</div>
+
+  <p>A California family that today cannot qualify for a mortgage on a $600,000+ home — the current floor for most new construction — could potentially build on purchased land for <strong>$190,000–$240,000 in total construction cost</strong> at full system operation.</p>
+
+  <p>That's not just cheaper. <strong>That's a different economic category entirely.</strong> The difference between homeownership being inaccessible and being achievable for middle-income California families.</p>
+
+  <p>Conventional builders either adopt the Terra Build system or become uncompetitive on cost. Insurance and code bodies face political pressure to recognize a system that solves housing affordability. The industry adapts or exits.</p>
+
+  <div class="big-callout" style="background: rgba(255,255,255,0.06); border-left-color: var(--clay); max-width: 680px;">
+    <p style="color: #d0c8be;">"Terra Build is not a construction company. It is a cost structure intervention — using engineering, technology, and sustained political engagement to make the status quo unsustainable and a better alternative impossible to ignore."</p>
+  </div>
+
+  <div class="closing-final">
+    Terra Build &nbsp;·&nbsp; Affordable Earth. Engineered for Life. &nbsp;·&nbsp; terrrabuild.org
+  </div>
+</div>
+
+</body>
+</html>

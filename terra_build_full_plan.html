@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra Build — Full Business Execution Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --paper: #f5f0e8;
+    --clay: #c4622d;
+    --clay-light: #f0ddd0;
+    --earth: #5c4a32;
+    --earth-light: #e8dfd0;
+    --sky: #2a5c8a;
+    --sky-light: #d8eaf7;
+    --moss: #2d5a27;
+    --moss-light: #d8edd6;
+    --rule: #c8bfb0;
+    --muted: #7a6e62;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background: var(--ink);
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 119px,
+      rgba(255,255,255,0.03) 119px,
+      rgba(255,255,255,0.03) 120px
+    );
+    pointer-events: none;
+  }
+
+  .cover-top { display: flex; flex-direction: column; justify-content: center; }
+
+  .cover-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--clay);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(72px, 10vw, 140px);
+    line-height: 0.9;
+    color: var(--paper);
+    margin-bottom: 32px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--clay);
+  }
+
+  .cover-sub {
+    font-size: 20px;
+    color: #8a9aaa;
+    max-width: 480px;
+    line-height: 1.5;
+    margin-bottom: 64px;
+  }
+
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+  }
+
+  .cover-meta-item {
+    padding: 24px 0;
+  }
+
+  .cover-meta-item .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #8a9aaa;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .cover-meta-item .value {
+    font-size: 15px;
+    color: var(--paper);
+    font-weight: 500;
+  }
+
+  /* LAYOUT */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  /* SECTION DIVIDER */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin: 80px 0 40px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--ink);
+    margin: 52px 0 16px;
+  }
+
+  h3 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin: 36px 0 12px;
+  }
+
+  p {
+    color: #2a2a2a;
+    margin-bottom: 20px;
+    max-width: 680px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0 0 24px;
+    max-width: 680px;
+  }
+
+  ul li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    color: #2a2a2a;
+  }
+
+  ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--clay);
+    font-family: 'DM Mono', monospace;
+  }
+
+  ul li strong {
+    color: var(--ink);
+  }
+
+  /* CALLOUT */
+  .callout {
+    border-left: 4px solid var(--clay);
+    background: var(--clay-light);
+    padding: 24px 28px;
+    margin: 32px 0;
+    max-width: 680px;
+  }
+
+  .callout p {
+    margin: 0;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--earth);
+  }
+
+  .callout-sky {
+    border-left-color: var(--sky);
+    background: var(--sky-light);
+  }
+  .callout-sky p { color: var(--sky); }
+
+  .callout-moss {
+    border-left-color: var(--moss);
+    background: var(--moss-light);
+  }
+  .callout-moss p { color: var(--moss); }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .data-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  .data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .data-table tr:nth-child(even) td { background: var(--earth-light); }
+
+  .data-table td.label-col {
+    font-weight: 600;
+    color: var(--sky);
+    white-space: nowrap;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+  }
+
+  /* STATION GRID */
+  .station-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 24px 0;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .station {
+    background: var(--paper);
+    padding: 28px;
+  }
+
+  .station-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .station-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 12px;
+  }
+
+  .station p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    max-width: none;
+  }
+
+  /* PHASE TIMELINE */
+  .timeline {
+    margin: 24px 0;
+    border-left: 2px solid var(--rule);
+    padding-left: 32px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--clay);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--clay);
+  }
+
+  .timeline-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .timeline-body {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0;
+  }
+
+  /* RISK TABLE */
+  .risk-grid {
+    display: grid;
+    gap: 2px;
+    margin: 24px 0;
+    background: var(--rule);
+  }
+
+  .risk-item {
+    background: var(--paper);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .risk-item:nth-child(even) { background: var(--earth-light); }
+
+  .risk-name { font-weight: 600; font-size: 14px; }
+  .risk-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .risk-high { background: #fde8e8; color: #8b1a1a; }
+  .risk-med { background: #fef3e2; color: #7a4f00; }
+  .risk-body { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* FOOTER */
+  .doc-footer {
+    background: var(--ink);
+    color: #8a9aaa;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .doc-footer strong { color: var(--paper); }
+
+  /* TOC */
+  .toc {
+    background: var(--earth-light);
+    padding: 40px;
+    margin: 40px 0;
+    max-width: 680px;
+  }
+
+  .toc-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .toc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .toc-item:hover { color: var(--clay); }
+  .toc-item .toc-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+
+  @media print {
+    .cover { page-break-after: always; }
+    h1 { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-label">Full Business Execution Plan &nbsp;·&nbsp; Confidential</div>
+    <div class="cover-title">Terra<br><em>Build</em></div>
+    <div class="cover-sub">Affordable Earth. Engineered for Life.<br>A plan to disrupt California's construction industry through cost, science, and sustainability.</div>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="label">Primary Market</div>
+      <div class="value">California</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Model</div>
+      <div class="value">Mobile Manufacturing + Open Software + Cooperative</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Mission</div>
+      <div class="value">Force the industry to adapt or exit</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCUMENT BODY -->
+<div class="page">
+
+  <!-- TABLE OF CONTENTS -->
+  <div style="margin: 60px 0 20px;">
+    <div class="toc-title">Contents</div>
+  </div>
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <a class="toc-item" href="#exec"><span>Executive Summary</span><span class="toc-num">01</span></a>
+    <a class="toc-item" href="#problem"><span>The Problem</span><span class="toc-num">02</span></a>
+    <a class="toc-item" href="#engineering"><span>Engineering Foundation</span><span class="toc-num">03</span></a>
+    <a class="toc-item" href="#manufacturing"><span>Manufacturing System</span><span class="toc-num">04</span></a>
+    <a class="toc-item" href="#software"><span>Software Platform</span><span class="toc-num">05</span></a>
+    <a class="toc-item" href="#policy"><span>Political &amp; Regulatory Strategy</span><span class="toc-num">06</span></a>
+    <a class="toc-item" href="#org"><span>Organizational Model</span><span class="toc-num">07</span></a>
+    <a class="toc-item" href="#phases"><span>Phased Execution</span><span class="toc-num">08</span></a>
+    <a class="toc-item" href="#risks"><span>Risks &amp; Mitigations</span><span class="toc-num">09</span></a>
+  </div>
+
+  <!-- 01 EXECUTIVE SUMMARY -->
+  <div class="section-header" id="exec">
+    <span class="section-num">01</span>
+    <h1>Executive Summary</h1>
+  </div>
+
+  <p>California's housing crisis is structural, not cyclical. The construction industry — protected by lobbying, favorable building codes, and institutional inertia — has maintained pricing that puts homeownership out of reach for most Californians. Terra Build exists to break that system through cost, not politics.</p>
+  <p>Adobe — compressed earth construction — is one of the oldest and most thermally efficient building materials on earth. It is also dramatically cheaper than conventional construction when properly engineered, manufactured, and deployed. The barriers to its use in California are not physical or scientific. They are regulatory, institutional, and political.</p>
+
+  <div class="callout">
+    <p>The goal is not profit. It is to make the current pricing model of conventional California construction economically unsustainable — forcing the industry to adapt or exit.</p>
+  </div>
+
+  <p>Terra Build removes those barriers through three integrated systems:</p>
+  <ul>
+    <li><strong>Manufacturing.</strong> A mobile unit produces certified, seismically-engineered adobe blocks on any job site using local soil — cutting structural wall costs to $12,000–$20,000 per house.</li>
+    <li><strong>Software.</strong> A platform that translates existing seismic science into location-specific geometric building designs — making every structure optimized for its exact site conditions.</li>
+    <li><strong>Policy.</strong> A 10-year strategy to achieve California code recognition — using research, affordable housing coalitions, and the political cost of blocking a cheaper construction method.</li>
+  </ul>
+
+  <!-- 02 THE PROBLEM -->
+  <div class="section-header" id="problem">
+    <span class="section-num">02</span>
+    <h1>The Problem</h1>
+  </div>
+
+  <h2>California's Housing Crisis Is a Construction Cost Crisis</h2>
+  <p>California has a housing shortfall of approximately 3.5 million units. The primary driver is not land scarcity — it is construction cost. A standard single-family home in California costs $300–$500 per square foot to build, before land. That makes homeownership mathematically impossible for most California households.</p>
+
+  <h3>How the industry maintains this</h3>
+  <ul>
+    <li>Building codes written by committees dominated by conventional material interests</li>
+    <li>Insurance frameworks that refuse to underwrite alternative methods, blocking financing</li>
+    <li>Contractor licensing structures that discourage alternative material expertise</li>
+    <li>No funded research pathway for alternative materials to achieve code recognition</li>
+  </ul>
+
+  <div class="callout callout-sky">
+    <p>The primary barriers to adobe in California are regulatory and political — not physical or scientific. The engineering solutions to seismic resistance exist. The manufacturing technology exists. What has been missing is the integrated system that makes it buildable, certifiable, and affordable at scale.</p>
+  </div>
+
+  <!-- 03 ENGINEERING -->
+  <div class="section-header" id="engineering">
+    <span class="section-num">03</span>
+    <h1>Engineering Foundation</h1>
+  </div>
+
+  <h2>Seismic Performance</h2>
+  <p>The conventional narrative is that adobe cannot withstand California earthquakes. This is a half-truth. Unreinforced traditional adobe performs poorly in major seismic events. Engineered adobe — optimized for specific site conditions — performs significantly better. Key findings from shake table testing at PUCP (Peru), UC Berkeley, and EERI field studies:</p>
+  <ul>
+    <li>External polymer or basalt fiber mesh arrests crack propagation — walls crack but stay standing</li>
+    <li>Wall geometry is as important as material — height-to-thickness ratios and buttress spacing dramatically affect performance</li>
+    <li>Latex-modified clay mortar at joints distributes energy absorption throughout the entire wall</li>
+    <li>Combined interventions have survived equivalent M7.5 ground motion in controlled testing</li>
+  </ul>
+
+  <h2>The Geometry-Seismicity Translation — Core Innovation</h2>
+  <p>Every location has a unique seismic signature — not just magnitude, but frequency content, pulse duration, fault directionality, and soil amplification. These characteristics are precisely mapped by USGS and the California Geological Survey. What has never been done is translating that data into geometric building rules for adobe construction. Terra Build's software performs this translation.</p>
+
+  <h2>The Engineered Wall System</h2>
+
+  <h3>1. Functionally Graded Wall Composition</h3>
+  <p>The dense thermal core — approximately 60% of wall thickness — is pure high-density adobe providing maximum thermal mass. The outer 40% is basalt-fiber-rich adobe providing ductility and crack arrest. Thermal mass is fully preserved where it matters most.</p>
+
+  <h3>2. Latex-Modified Clay Mortar</h3>
+  <p>Natural rubber latex added to clay mortar creates a viscoelastic joint that absorbs and converts seismic energy to heat. Under rapid earthquake loading, joints stiffen and dissipate energy. Under slow thermal cycling, they behave normally.</p>
+
+  <h3>3. External Basalt Fiber Mesh</h3>
+  <p>Applied to the exterior face after construction. Basalt fiber is derived from volcanic rock — thermally and chemically compatible with earthen construction, with higher tensile strength than fiberglass and dramatically lower thermal conductivity than steel.</p>
+
+  <h3>4. Low-Tech Base Isolation</h3>
+  <p>Recycled rubber pads and rounded river stones in a contained sand layer between foundation and wall base reduce transmitted ground acceleration by an estimated 20–40% for moderate seismic events. Simple, cheap, and effective as one layer in a multi-layer system.</p>
+
+  <!-- 04 MANUFACTURING -->
+  <div class="section-header" id="manufacturing">
+    <span class="section-num">04</span>
+    <h1>Manufacturing System</h1>
+  </div>
+
+  <h2>The Mobile Production Unit (MPU)</h2>
+  <p>A single trailer-mounted unit that brings industrial block manufacturing to any job site, eliminating factory overhead and transportation cost for the heaviest material — the soil itself.</p>
+
+  <div class="callout">
+    <p>The fundamental cost advantage: soil is free or near-free on most California construction sites. By producing blocks on-site, the MPU eliminates the cost of transporting tons of raw material — the largest hidden cost in conventional masonry construction.</p>
+  </div>
+
+  <h3>Station Configuration</h3>
+  <div class="station-grid">
+    <div class="station">
+      <div class="station-num">01</div>
+      <div class="station-name">Soil Processing</div>
+      <p>Jaw crusher and screen processes raw excavated soil. Removes debris, sizes particles. 2–3 tons per hour.</p>
+    </div>
+    <div class="station">
+      <div class="station-num">02</div>
+      <div class="station-name">Testing & Amendment</div>
+      <p>20-minute field soil test. Tablet connects to software system. Automated amendment dispenser adds basalt fiber and latex additives to spec.</p>
+    </div>
+    <div class="station">
+      <div class="station-num">03</div>
+      <div class="station-name">Mixing</div>
+      <p>Industrial pan mixer or pugmill meters all components precisely. Consistent mix regardless of operator skill level.</p>
+    </div>
+    <div class="station">
+      <div class="station-num">04</div>
+      <div class="station-name">Pressing</div>
+      <p>Hydraulic CEB press produces interlocking certified blocks at 300–500 per hour. Each block QR-coded with full production record.</p>
+    </div>
+    <div class="station">
+      <div class="station-num">05</div>
+      <div class="station-name">Curing</div>
+      <p>Lightweight shade structure with forced air circulation. Moisture monitoring certifies completion. 3–5 days vs weeks for sun drying.</p>
+    </div>
+    <div class="station" style="background: var(--earth-light);">
+      <div class="station-num" style="color: var(--clay);">∑</div>
+      <div class="station-name">Unit Specs</div>
+      <p>Standard flatbed trailer · Half-day setup · 2–3 person crew · $200K–$300K per unit · 20–50 hours to produce one full house</p>
+    </div>
+  </div>
+
+  <h2>The Amendment Package System</h2>
+  <p>Pre-formulated, pre-measured additive sets that correct variable local soil to a consistent certified specification — similar to how concrete admixtures work but designed for earthen construction. Each package contains basalt fiber, natural latex concentrate, clay mineral correctors, stabilizer, and moisture retention polymer.</p>
+  <p>This is the razor-blade in the business model — every MPU in the field consumes amendment packages continuously. Packages are lightweight, high-value, and easy to ship regionally. Priced at cost for the mission, not for margin.</p>
+
+  <h2>Project Economics</h2>
+  <table class="data-table">
+    <thead>
+      <tr><th>Cost Component</th><th>Conventional CA</th><th>Terra Build MPU</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Structural wall material</td><td>$150K–$250K</td><td>$0 (site soil)</td></tr>
+      <tr><td>Amendment packages</td><td>—</td><td>$3K–$6K</td></tr>
+      <tr><td>MPU operating cost</td><td>—</td><td>$2K–$4K</td></tr>
+      <tr><td>Production crew (1 week)</td><td>—</td><td>$6K–$9K</td></tr>
+      <tr><td>Block certification</td><td>—</td><td>$500–$1K</td></tr>
+      <tr><td><strong>Total wall structure</strong></td><td><strong>$150K–$250K</strong></td><td><strong>$12K–$20K</strong></td></tr>
+    </tbody>
+  </table>
+
+  <!-- 05 SOFTWARE -->
+  <div class="section-header" id="software">
+    <span class="section-num">05</span>
+    <h1>Software Platform</h1>
+  </div>
+
+  <p>A six-layer system that translates publicly available seismic science into certified, buildable adobe designs for any California location.</p>
+
+  <h3>Layer 1 — Site Seismic Analysis Engine</h3>
+  <p>Integrates USGS Unified Hazard Tool API, fault databases, VS30 soil maps, and CGS microzonation data. Computes peak ground acceleration, full site-specific response spectrum, dominant period, near-fault classification, and soil amplification factors for any GPS coordinate.</p>
+
+  <h3>Layer 2 — The Translation Engine (Core Innovation)</h3>
+  <p>Converts the seismic signature into geometric design parameters. Sub-components include the wall proportion calculator, buttress geometry engine, corner optimization module, opening constraint calculator, plan shape advisor, and foundation/isolation calculator. This translation layer has never been built before.</p>
+
+  <h3>Layer 3 — Archetype Matching and Generative Design</h3>
+  <p>Prescriptive mode: a library of pre-certified geometric archetypes organized by seismic zone — builders select and build without custom engineering. Parametric mode: topology-optimized custom design for architects, generating compliant options ranked by predicted seismic performance.</p>
+
+  <h3>Layer 4 — Block Specification Integration</h3>
+  <p>Connects geometric design to the manufactured block system. Returns block specs, amendment package requirements, material quantities, and certified product references. One workflow from site address to procurement list.</p>
+
+  <h3>Layer 5 — Output and Documentation Engine</h3>
+  <p>Produces construction-ready drawings, structural specifications, material schedules, performance reports, code compliance packages for variance applications, and inspector checklists for each wall assembly.</p>
+
+  <h3>Layer 6 — Validation and Feedback Loop</h3>
+  <p>Post-earthquake performance data from instrumented buildings refines translation rules over time. Every seismic event improves predictive accuracy. Machine learning refinement as real-world data accumulates.</p>
+
+  <h3>Technical Stack</h3>
+  <table class="data-table">
+    <tbody>
+      <tr><td class="label-col">Backend</td><td>Python, FastAPI, NumPy/SciPy, OpenQuake PSHA engine, PostgreSQL/PostGIS</td></tr>
+      <tr><td class="label-col">Seismic Data</td><td>USGS Hazard Curves API, OpenQuake, CGS microzonation</td></tr>
+      <tr><td class="label-col">Geometry / CAD</td><td>OpenCASCADE (Python-OCC), ezdxf, ifcopenshell for BIM/IFC</td></tr>
+      <tr><td class="label-col">Frontend</td><td>React/TypeScript, Three.js 3D visualization, Mapbox hazard mapping</td></tr>
+      <tr><td class="label-col">ML Layer</td><td>PyTorch — performance prediction refinement from accumulated field data</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 06 POLICY -->
+  <div class="section-header" id="policy">
+    <span class="section-num">06</span>
+    <h1>Political &amp; Regulatory Strategy</h1>
+  </div>
+
+  <div class="callout callout-sky">
+    <p>Building codes are a lagging indicator — they follow political and economic reality, they don't lead it. Win the political conditions and the code follows. Fight the code directly and you spend a decade in committee rooms while nothing gets built.</p>
+  </div>
+
+  <h2>Phase 1 — Build Evidence Nobody Can Argue With</h2>
+  <ul>
+    <li><strong>UC Berkeley PEER Partnership.</strong> Most credible seismic institution in California. Frame as housing affordability research to attract HCD funding.</li>
+    <li><strong>PUCP Partnership.</strong> Peru's leading adobe earthquake testing lab. Brings decades of existing data into the California technical record immediately.</li>
+    <li><strong>Certification Database.</strong> Every MPU-produced block feeds the database. After 100 projects, Terra Build holds a performance dataset no conventional material can match for transparency.</li>
+  </ul>
+
+  <h2>Phase 2 — Geographic Entry Strategy</h2>
+  <ul>
+    <li><strong>Rural First.</strong> Unincorporated counties — Nevada, Tuolumne, Trinity — have simpler permitting and building departments willing to engage directly.</li>
+    <li><strong>Owner-Builder Exemption.</strong> California Health and Safety Code Section 19482 creates a legal pathway for variance applications with politically sympathetic optics.</li>
+    <li><strong>New Mexico Precedent.</strong> Their 1991 adobe code is the existence proof. Their code language is the template.</li>
+  </ul>
+
+  <h2>Phase 3 — The Affordable Housing Political Vehicle</h2>
+  <p>The political frame: California is blocking a construction method that cuts housing costs by 60–70%. That story belongs to YIMBY Action, Habitat for Humanity California, California Community Land Trust Network, and environmental groups. The specific legislative vehicle is a certified adobe ADU pilot program — lower stakes, politically popular, exactly how cob construction entered the IRC.</p>
+
+  <h2>Phase 4 — Insurance Bridge</h2>
+  <ul>
+    <li><strong>Surplus Lines First.</strong> Operate outside standard market frameworks. The certification database makes this conversation possible.</li>
+    <li><strong>Lloyd's Engagement.</strong> A Lloyd's binder covering certified Terra Build construction would give conventional insurers cover to follow.</li>
+    <li><strong>Actuarial Data Build.</strong> 5–7 years of insured project data supports ISO classification — which opens standard insurance and conventional financing.</li>
+  </ul>
+
+  <h2>Phase 5 — Formal Code Engagement</h2>
+  <p>Only after phases 1–4 have built the foundation. Target an IRC earthen construction appendix covering CEB and manufactured adobe. Separately target a California-specific HCD standard framed as a housing affordability initiative. Sustained presence on ICC technical committees is non-negotiable — this is how the cob advocates won.</p>
+
+  <h2>Realistic Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-period">Years 1–2</div>
+      <div class="timeline-title">Foundation</div>
+      <p class="timeline-body">Research partnerships established. Rural pilot projects built. Owner-builder case studies documented. Surplus lines insurance secured. Certification database initiated.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">Years 3–4</div>
+      <div class="timeline-title">Validation</div>
+      <p class="timeline-body">Peer-reviewed publications. Certification database demonstrates performance across 50+ projects. Affordable housing pilot applications. Legislative relationships built.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">Years 5–6</div>
+      <div class="timeline-title">Scale and Engagement</div>
+      <p class="timeline-body">IRC appendix process formally engaged. HCD engagement on California-specific standard. Insurance market development. Media campaign at scale.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">Years 7–10</div>
+      <div class="timeline-title">Code Recognition</div>
+      <p class="timeline-body">California Earthen Construction Standard adopted. Mainstream insurance access. Conventional financing available. Mass market entry. Industry forced to adapt.</p>
+    </div>
+  </div>
+
+  <!-- 07 ORG MODEL -->
+  <div class="section-header" id="org">
+    <span class="section-num">07</span>
+    <h1>Organizational Model</h1>
+  </div>
+
+  <p>To execute the mission — make adobe so affordable it forces the industry to adapt — the organizational structure must prevent the cost inflation that investor return requirements create.</p>
+
+  <table class="data-table">
+    <tbody>
+      <tr><td class="label-col">Software</td><td>Open-source core, free to owner-builders. Low-cost commercial license. Funded by certification fees — not by inflating costs for those who need it most.</td></tr>
+      <tr><td class="label-col">MPU Fleet</td><td>Owned by regional cooperatives. Member builders pay cost-based rental. Surplus funds next MPU purchase. Same model as agricultural equipment cooperatives — proven at scale for a century.</td></tr>
+      <tr><td class="label-col">Amendment Packages</td><td>Sold at cost plus minimal operating margin. A fraction of equivalent conventional material costs.</td></tr>
+      <tr><td class="label-col">Certification</td><td>Small per-block fee funds database and ongoing research. Creates the data asset that drives code recognition and insurance underwriting.</td></tr>
+      <tr><td class="label-col">Research</td><td>Nonprofit partnership with UC system and PUCP. Funded by HCD housing research grants, foundations, and a portion of certification revenues.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-moss">
+    <p>The cooperative structure means the mission is structurally protected. It cannot be acquired and repriced by a conventional industry player. No investor can demand returns that inflate prices to the builders we are trying to enable.</p>
+  </div>
+
+  <!-- 08 PHASES -->
+  <div class="section-header" id="phases">
+    <span class="section-num">08</span>
+    <h1>Phased Execution</h1>
+  </div>
+
+  <h2>Phase 1 — Foundation (Years 1–2)</h2>
+  <h3>Manufacturing</h3>
+  <ul>
+    <li>Build and field-test first MPU prototype across 3 rural California projects</li>
+    <li>Develop and lab-certify first amendment package formulations for California soil types</li>
+    <li>Document full production data and construction outcomes</li>
+  </ul>
+  <h3>Software</h3>
+  <ul>
+    <li>Build Layers 1 and 2 — seismic analysis and translation engine MVP</li>
+    <li>USGS API integration and core translation rules from existing research literature</li>
+    <li>Validate against known PUCP and EERI performance data</li>
+  </ul>
+  <h3>Policy</h3>
+  <ul>
+    <li>Execute UC Berkeley and PUCP research partnerships</li>
+    <li>Document first owner-builder projects as detailed case studies</li>
+    <li>Begin surplus lines insurance relationships</li>
+  </ul>
+
+  <h2>Phase 2 — Validation (Years 3–4)</h2>
+  <ul>
+    <li>Scale to 3–5 MPUs through cooperative structure</li>
+    <li>50+ certified projects — first peer-reviewed publications</li>
+    <li>Full documentation output engine — construction-ready drawings from address input</li>
+    <li>ADU pilot program legislation drafted with legislative allies</li>
+  </ul>
+
+  <h2>Phase 3 — Scale and Recognition (Years 5–7)</h2>
+  <ul>
+    <li>Regional cooperative network across California</li>
+    <li>200+ certified projects, performance data through at least one significant seismic event</li>
+    <li>IRC earthen construction appendix formally submitted</li>
+    <li>Lloyd's of London binder secured — media campaign at scale</li>
+  </ul>
+
+  <h2>Phase 4 — Mass Market (Years 8–10)</h2>
+  <ul>
+    <li>California code recognition in progressive counties</li>
+    <li>Standard insurance and conventional financing available</li>
+    <li>Cost differential sustained — industry adaptation underway</li>
+    <li>Replication framework for other seismic regions globally: Turkey, Iran, Nepal, Peru</li>
+  </ul>
+
+  <!-- 09 RISKS -->
+  <div class="section-header" id="risks">
+    <span class="section-num">09</span>
+    <h1>Risks &amp; Mitigations</h1>
+  </div>
+
+  <div class="risk-grid">
+    <div class="risk-item" style="grid-template-columns: 1fr; background: var(--ink); color: var(--paper); padding: 12px 28px;">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; gap: 24px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #8a9aaa;">
+        <span>RISK</span><span>LEVEL</span><span>MITIGATION</span>
+      </div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-name">Seismic event damages a Terra Build structure</div>
+      <span class="risk-level risk-high">High</span>
+      <div class="risk-body">Certification system documents every build. Post-event assessment compares predicted vs actual. Transparent data publication regardless of outcome — this is the standard we hold ourselves to.</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-name">Conventional industry lobbying blocks legislative progress</div>
+      <span class="risk-level risk-med">Medium</span>
+      <div class="risk-body">Affordable housing frame makes opposition politically costly. Multiple parallel pathways — federal, state, county — reduce single-point blocking risk.</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-name">Insurance market refuses engagement</div>
+      <span class="risk-level risk-high">High</span>
+      <div class="risk-body">Surplus lines bridge market maintained throughout. Lloyd's engagement as legitimizing event. Actuarial data build is a multi-year strategy that cannot be shortcut.</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-name">MPU operational reliability</div>
+      <span class="risk-level risk-med">Medium</span>
+      <div class="risk-body">Prototype testing before commercial deployment. Maintenance contracts. Backup MPU availability through cooperative network sharing.</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-name">Soil variability exceeds amendment system capacity</div>
+      <span class="risk-level risk-med">Medium</span>
+      <div class="risk-body">Expand lab testing across California soil types in Phase 1. Build soil exclusion criteria into software — some sites are simply unsuitable and the system will say so.</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top: 60px;">
+    <p>Terra Build is not a construction company. It is a cost structure intervention — using engineering, technology, and sustained political engagement to make the status quo economically unsustainable and a better alternative impossible to ignore.</p>
+  </div>
+
+  <div style="height: 80px;"></div>
+</div>
+
+<div class="doc-footer">
+  <span><strong>TERRA BUILD</strong> &nbsp;·&nbsp; Full Business Execution Plan &nbsp;·&nbsp; Confidential</span>
+  <span>terrrabuild.org</span>
+</div>
+
+</body>
+</html>
