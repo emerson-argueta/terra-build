@@ -436,6 +436,14 @@
 </head>
 <body>
 
+<!-- NAV -->
+<nav style="background: #0f0d0b; padding: 12px 80px; display: flex; gap: 32px; align-items: center; border-bottom: 2px solid #8b5a2b;">
+  <span style="font-family: 'Instrument Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #8b5a2b; margin-right: auto;">Terra Build</span>
+  <a href="index.html" style="font-family: 'Instrument Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6560; text-decoration: none;">Overview</a>
+  <a href="terra_build_cost_analysis.html" style="font-family: 'Instrument Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6560; text-decoration: none;">Cost Analysis</a>
+  <a href="terra_build_full_plan.html" style="font-family: 'Instrument Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; text-decoration: none; border-bottom: 1px solid #8b5a2b; padding-bottom: 1px;">Full Plan</a>
+</nav>
+
 <!-- COVER -->
 <div class="cover">
   <div class="cover-top">
@@ -477,6 +485,7 @@
     <a class="toc-item" href="#org"><span>Organizational Model</span><span class="toc-num">07</span></a>
     <a class="toc-item" href="#phases"><span>Phased Execution</span><span class="toc-num">08</span></a>
     <a class="toc-item" href="#risks"><span>Risks &amp; Mitigations</span><span class="toc-num">09</span></a>
+    <a class="toc-item" href="#licensing"><span>Open Infrastructure &amp; Licensing</span><span class="toc-num">10</span></a>
   </div>
 
   <!-- 01 EXECUTIVE SUMMARY -->
@@ -830,6 +839,77 @@
   <div class="callout" style="margin-top: 60px;">
     <p>Terra Build is not a construction company. It is a cost structure intervention — using engineering, technology, and sustained political engagement to make the status quo economically unsustainable and a better alternative impossible to ignore.</p>
   </div>
+
+  <div style="height: 80px;"></div>
+
+  <!-- 10 OPEN INFRASTRUCTURE -->
+  <div class="section-header" id="licensing">
+    <span class="section-num">10</span>
+    <h1>Open Infrastructure &amp; Licensing</h1>
+  </div>
+
+  <p>Terra Build's legal architecture is as deliberate as its engineering architecture. Every component is licensed to maximize adoption, prevent predatory capture, and ensure improvements flow back to the commons. The goal is a system that cannot be acquired, closed, or repriced by any private interest — not through goodwill, but through law.</p>
+
+  <div class="callout callout-sky">
+    <p>Open licensing is not altruism here. It is the mechanism that makes the cooperative model structurally durable. A proprietary system can be bought. An open system with the right licenses cannot be closed — only forked, and forks must remain open.</p>
+  </div>
+
+  <h2>The Finalized License Map</h2>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Component</th><th>License</th><th>Role in the Ecosystem</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>TerraEngine Software</strong></td>
+        <td>AGPL-3.0</td>
+        <td>Closes the SaaS loophole. Any firm that hosts the translation engine as a web service must publish their source code. The seismic-to-geometry logic cannot be captured and sold without giving back.</td>
+      </tr>
+      <tr>
+        <td><strong>Amendment Package Formulations</strong></td>
+        <td>CC BY-SA 4.0</td>
+        <td>The Open Razor Blade. Chemical specifications are free to use and manufacture. Any improvement to a formulation must be shared under the same terms. Prevents predatory patenting of the core consumable.</td>
+      </tr>
+      <tr>
+        <td><strong>MPU Manufacturing Specs</strong></td>
+        <td>CC BY-SA 4.0</td>
+        <td>Any cooperative can build their own Mobile Production Unit from these specifications. Hardware improvements discovered in the field must be shared back. The fleet improves collectively.</td>
+      </tr>
+      <tr>
+        <td><strong>Performance Database</strong></td>
+        <td>CC0 — Public Domain</td>
+        <td>Zero legal friction for insurers, researchers, and code bodies. No attribution requirement, no license negotiation. The earthquake performance data exists to be used. Frictionlessness is the point.</td>
+      </tr>
+      <tr>
+        <td><strong>Policy &amp; Strategy Documents</strong></td>
+        <td>CC BY-SA 4.0</td>
+        <td>Local YIMBY groups and housing advocates can adapt the variance application templates and political roadmap for their specific county building departments. Adaptations must credit Terra Build and share under the same terms — creating a traceable lineage of policy development.</td>
+      </tr>
+      <tr>
+        <td><strong>Archetype Designs</strong></td>
+        <td>CC BY 4.0</td>
+        <td>Architects can use certified archetypes in commercial projects without ShareAlike infecting their broader design work. Maximum adoption is the goal. Every commercial project built from a Terra Build archetype is a performance data point and a public demonstration.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Why Each License Was Chosen</h2>
+
+  <h3>AGPL-3.0 over GPLv3 for Software</h3>
+  <p>TerraEngine is a web application. A company could run GPLv3 software as a hosted service, charge for access, and never distribute the binary — technically complying with GPLv3 while capturing all the value. AGPL closes that by treating network use as distribution. Any firm that hosts a modified TerraEngine must publish their source code.</p>
+
+  <h3>CC BY-SA over CC BY-ND for Policy Documents</h3>
+  <p>NoDerivatives would prevent a Sacramento housing advocacy group from adapting the variance application template for Sacramento County's specific building department language. That adaptation is exactly what the strategy needs to happen. ShareAlike allows adaptation while maintaining attribution and requiring derivatives to remain open — creating a spreading network of policy tools rather than a locked document.</p>
+
+  <h3>CC BY over CC BY-SA for Archetypes</h3>
+  <p>An architect doing a commercial project will not use an archetype if ShareAlike might be interpreted as infecting their broader design work. CC BY removes that friction entirely. The architect can adapt the archetype, charge for their services, and the only obligation is crediting Terra Build. Adoption matters more than control here.</p>
+
+  <h3>CC0 for Performance Data</h3>
+  <p>The data's value comes entirely from being used — by actuaries modeling insurance risk, by researchers publishing peer-reviewed studies, by code bodies evaluating technical evidence. Any license, even a permissive one requiring attribution, creates friction that slows those uses. CC0 eliminates all friction. The certification system that generates the data is AGPL-protected. The data itself belongs to everyone.</p>
+
+  <h2>The Trademark Layer</h2>
+  <p>Licenses govern what others can do with Terra Build's designs and code. A registered trademark on <strong>Terra Build Certified</strong> governs what others can call their products. Someone can legally take the CC BY-SA licensed MPU design, build their own unit, and produce blocks with it. What they cannot do is call those blocks Terra Build Certified without going through the certification system. The trademark protects the quality assurance chain even in a fully open ecosystem. Register it early — before the system has enough visibility to attract imitators.</p>
 
   <div style="height: 80px;"></div>
 </div>

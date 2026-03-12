@@ -370,28 +370,25 @@
     text-transform: uppercase;
   }
 
-  /* ── HOW SECTION ── */
-  .how-section {
-    background: var(--white);
-    padding: 80px;
-  }
-
-  .how-section-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
   @media (max-width: 768px) {
     .hero { padding: 60px 32px 48px; }
     .hero-stats { flex-direction: column; gap: 24px; }
     .hero-stat { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 24px; }
     .pillars, .how-grid, .timeline-grid { grid-template-columns: 1fr; }
-    .section, .cost-section, .timeline-section, .closing, .how-section { padding: 48px 32px; }
+    .section, .cost-section, .timeline-section, .closing { padding: 48px 32px; }
     .mission-band { padding: 40px 32px; }
   }
 </style>
 </head>
 <body>
+
+<!-- NAV -->
+<nav style="background: var(--earth); padding: 12px 80px; display: flex; gap: 32px; align-items: center; border-bottom: 2px solid var(--clay);">
+  <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay); margin-right: auto;">Terra Build</span>
+  <a href="index.html" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; text-decoration: none; border-bottom: 1px solid var(--clay); padding-bottom: 1px;">Overview</a>
+  <a href="terra_build_cost_analysis.html" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a898; text-decoration: none;">Cost Analysis</a>
+  <a href="terra_build_full_plan.html" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #b0a898; text-decoration: none;">Full Plan</a>
+</nav>
 
 <!-- HERO -->
 <div class="hero">
@@ -461,8 +458,8 @@
 </div>
 
 <!-- HOW IT WORKS -->
-<div class="how-section">
-  <div class="how-section-inner">
+<div style="background: var(--white); padding: 80px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
     <div class="section-label">How It Works</div>
     <div class="section-title">From Dirt to Certified Block<br>in Under a Week</div>
 
@@ -597,6 +594,58 @@
       <div class="how-card-tag">Research</div>
       <h3>Independent Evidence</h3>
       <p>A nonprofit research entity partnered with UC system and PUCP produces the peer-reviewed evidence base. Funded by HCD grants and foundations — not by anyone with a financial stake in the outcome.</p>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!-- LICENSING -->
+<div style="background: var(--sand); padding: 80px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="section-label">Open Infrastructure</div>
+    <div class="section-title" style="color: var(--earth);">Built to Stay Open.<br>By Law, Not Goodwill.</div>
+    <p class="body">Every component of Terra Build is licensed to maximize adoption, prevent predatory capture, and ensure improvements flow back to the commons. A proprietary system can be bought and repriced. An open system with the right licenses cannot be closed — only forked, and forks must remain open.</p>
+
+    <div style="margin-top: 40px; border: 1px solid var(--rule); background: var(--white);">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; background: var(--earth); padding: 12px 24px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #b0a898; gap: 24px;">
+        <span>Component</span><span>License</span><span>Why</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; padding: 16px 24px; gap: 24px; border-bottom: 1px solid var(--rule); align-items: start;">
+        <span style="font-weight: 600; font-size: 14px;">TerraEngine Software</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--clay);">AGPL-3.0</span>
+        <span style="font-size: 13px; color: var(--muted);">Closes the SaaS loophole. Any firm hosting the translation engine as a service must publish their source code.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; padding: 16px 24px; gap: 24px; background: var(--sand); border-bottom: 1px solid var(--rule); align-items: start;">
+        <span style="font-weight: 600; font-size: 14px;">Amendment Formulations</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--clay);">CC BY-SA 4.0</span>
+        <span style="font-size: 13px; color: var(--muted);">The Open Razor Blade. Free to manufacture. Improvements must be shared. Prevents predatory patenting of the core consumable.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; padding: 16px 24px; gap: 24px; border-bottom: 1px solid var(--rule); align-items: start;">
+        <span style="font-weight: 600; font-size: 14px;">MPU Manufacturing Specs</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--clay);">CC BY-SA 4.0</span>
+        <span style="font-size: 13px; color: var(--muted);">Any cooperative can build their own Mobile Production Unit. Hardware improvements discovered in the field must be shared back.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; padding: 16px 24px; gap: 24px; background: var(--sand); border-bottom: 1px solid var(--rule); align-items: start;">
+        <span style="font-weight: 600; font-size: 14px;">Performance Database</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--clay);">CC0</span>
+        <span style="font-size: 13px; color: var(--muted);">Zero friction for insurers, researchers, and code bodies. No attribution required. The data exists to be used — frictionlessness is the point.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; padding: 16px 24px; gap: 24px; border-bottom: 1px solid var(--rule); align-items: start;">
+        <span style="font-weight: 600; font-size: 14px;">Policy &amp; Strategy Docs</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--clay);">CC BY-SA 4.0</span>
+        <span style="font-size: 13px; color: var(--muted);">Local advocacy groups can adapt building code petitions for their specific county. Adaptations must credit Terra Build and remain open — a traceable lineage of policy development.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 2fr 1fr 3fr; padding: 16px 24px; gap: 24px; align-items: start;">
+        <span style="font-weight: 600; font-size: 14px;">Archetype Designs</span>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--clay);">CC BY 4.0</span>
+        <span style="font-size: 13px; color: var(--muted);">Architects can use certified archetypes in commercial projects without ShareAlike infecting their broader design work. Maximum adoption. Every project is a performance data point.</span>
+      </div>
+    </div>
+
+    <div class="big-callout" style="margin-top: 40px;">
+      <p>The trademark on <strong>Terra Build Certified</strong> sits above all of these licenses. The licenses govern what others can do with the designs and code. The trademark governs what they can call their products. Register it before the system has visibility enough to attract imitators.</p>
     </div>
   </div>
 </div>
